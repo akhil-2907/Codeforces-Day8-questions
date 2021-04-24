@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main()
+{
+    ll n;  cin>>n;
+    string s;  cin>>s;
+    ll q;  cin>>q;
+    while(q--)
+    {
+        ll code,a,b;
+        cin>>code;
+
+        if(code==1)
+        {
+            cin>>a>>b;
+          
+           a--,b--;
+           swap(s[a],s[b]);
+        }
+        else
+        {
+            cin>>a>>b;
+            rotate(s.begin(), s.begin() + n, s.end());  
+        }
+    }
+    cout<<s<<endl;
+
+
+}

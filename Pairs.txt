@@ -1,0 +1,70 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+void solve(){
+	int n;
+    cin>>n;
+    int mk[2*n+1]={};
+ 
+    for(int i=0; i<n; ++i){
+    	int x; cin>>x;
+    	mk[x]=1;
+    }
+ 
+    int i=0, j=1; // my two pointers
+ 
+    int ans[n+1]={};
+    ans[0]++;
+    ans[n]++;
+ 
+    int l=1, r=n-1;
+    for(int i=1; i<=2*n; ++i){
+    	if (mk[i]==1){
+    		j = max(j,i);
+    		while(j!=2*n and mk[j]!=0){
+    			j++;
+    		}
+    		if(mk[j]==0){
+    			mk[j]=2;
+    		}
+    		else break;
+    		ans[l++]++;
+ 
+    	}
+    }
+ 
+    for(int i=1; i<=2*n; ++i){
+    	if(mk[i]==2)mk[i]=0;
+    }
+ 
+    j=2*n-1; // moving pointer to the right side
+    for(i=2*n; i>=1; --i){
+    	if(mk[i]==1){
+    		j = min(j, i);
+	    	while(j!=1 and mk[j]!=0){
+	    		j--;
+	    	}
+	    	if(mk[j]==0){
+	    		mk[j]=2;
+	    		
+	    	}
+	    	else break;
+	    	ans[r--]++;
+	    }
+    }
+ 
+    int final=0;
+    for(int i=0; i<=n; ++i){
+    	if(ans[i]==2){
+    		final++;
+    	}
+    }
+    cout<<final<<endl;
+}
+ 
+int main()
+{
+	int t; cin>>t;
+	while(t-->0) solve();
+	return 0;	
+}

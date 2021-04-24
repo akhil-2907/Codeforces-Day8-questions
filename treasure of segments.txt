@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main()
+{
+    ll t;  cin>>t; 
+    while(t--)
+    {
+        ll n;  cin>>n;
+        vector<ll>l(n),r(n);
+        vector<pair<ll,ll>>v;
+        for(ll i=0;i<n;i++)
+        {
+            cin>>l[i]>>r[i];
+            v.push_back({l[i],r[i]});
+        }
+        sort(l.begin(),l.end());
+        sort(r.begin(),r.end());
+        ll ans =INT_MAX;
+        for(auto [x,y]: v)
+        {
+            ll it = lower_bound(r.begin(),r.end(),x)-r.begin();
+            ll ng = n-(upper_bound(l.begin(),l.end(),y)-l.begin());
+
+            ans = min(ans,(it+ng));
+
+        }
+        cout<<ans<<endl;
+    }
+}

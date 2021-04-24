@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main()
+{
+    ll n;  cin>>n;
+    vector<ll>a(n),b(n);
+
+    for(auto &it : a)  cin>>it;
+    for(auto &it: b)  cin>>it;
+
+    sort(a.begin(),a.end());
+    ll l =a[n-1];
+    sort(b.begin(),b.end());
+    ll r= b[0];
+
+    if(l>r) cout<<0<<endl;
+    else cout<<r-l+1<<endl;
+}

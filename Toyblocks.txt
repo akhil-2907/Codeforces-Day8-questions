@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main()
+{
+    ll t;  cin>>t;
+    while(t--)
+    {
+        ll n;  cin>>n;
+        ll maxt =INT_MIN;
+        ll sum =0;
+        for(ll i=0;i<n;i++)
+        {
+            ll a;
+            cin>>a;
+            sum+=a;
+            maxt =max(maxt,a);
+        }
+        ll ans = ceil((double)sum/(n-1));
+        //cout<<ans<<endl;
+        maxt = max(ans,maxt);
+
+        cout<<(n-1)*maxt-sum<<endl;
+    }
+}
